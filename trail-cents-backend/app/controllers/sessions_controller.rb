@@ -9,4 +9,8 @@ class SessionsController < ApplicationController
             render json: {error: "Password/Email combo did not meet our records. Please enter valid login credentials"}
         end
     end
+
+    def destroy
+        cookies.destroy(:jwt)
+    end
 end

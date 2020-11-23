@@ -10,6 +10,7 @@ import App from './App';
 
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './style.css'
 
 
 const initialState = {

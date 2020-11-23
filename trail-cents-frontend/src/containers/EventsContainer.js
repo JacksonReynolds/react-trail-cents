@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import fetchEvents from '../actions/events/fetch'
+import EventsList from '../components/events/EventsList'
 
 class EventsContainer extends Component {
 
@@ -10,8 +11,8 @@ class EventsContainer extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Events</h2>
+            <div className="events container">
+                <EventsList events={this.props.events}/>
             </div>
         )
     }

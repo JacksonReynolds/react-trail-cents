@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
+import RewardsList from '../components/rewards/RewardsList'
+import Reward from '../components/rewards/Reward'
+import { connect } from 'react-redux'
 
 class RewardsContainer extends Component {
     render() {
         return (
-            <div>
-                <h2>Rewards</h2>
+            <div className="rewards-container">
+                <RewardsList rewards={this.props.rewards}/>
             </div>
         )
     }
 }
 
-export default RewardsContainer
+export default connect()(RewardsContainer)

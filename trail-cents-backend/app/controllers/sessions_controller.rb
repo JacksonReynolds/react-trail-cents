@@ -5,8 +5,10 @@ class SessionsController < ApplicationController
             created_jwt = issue_token({id: user.id})
             cookies.signed[:jwt] = {value: created_jwt, httponly: true}
             render json: UserSerializer.new(user)
-        else 
-            render json: {error: "Password/Email combo did not meet our records. Please enter valid login credentials"}
+        elsif user
+            render json: {errors: user.errors.full_messages}
+        else
+            render 
         end
     end
 

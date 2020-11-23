@@ -8,6 +8,10 @@ import thunk from 'redux-thunk'
 import {root as rootReducer} from './reducers/index.js'
 import App from './App';
 
+// Importing the Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 const initialState = {
   events: [],
   rewards: []

@@ -3,7 +3,7 @@ import RewardsList from '../components/rewards/RewardsList'
 import fetchRewards from '../actions/rewards/fetch'
 import { connect } from 'react-redux'
 
-class RewardsContainer extends PureComponent {
+class RewardsPage extends PureComponent {
 
     componentDidMount() {
         this.props.fetchRewards()
@@ -24,4 +24,4 @@ const mapStateToProps = ({rewards}) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchRewards})(RewardsContainer)
+export default connect(mapStateToProps, {fetchRewards})(RewardsPage)

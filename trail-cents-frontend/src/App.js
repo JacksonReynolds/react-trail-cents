@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import NavBar from './components/NavBar.js'
 import { connect } from 'react-redux'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import RewardsContainer from './containers/RewardsContainer'
-import EventsContainer from './containers/EventsContainer'
+import RewardsPage from './containers/RewardsPage'
+import EventsPage from './containers/EventsPage'
 import Container from 'react-bootstrap/Container'
+import SignupPage from './containers/SignupPage'
+import LoginPage from './containers/LoginPage'
 
 class App extends Component {
 
@@ -14,11 +16,20 @@ class App extends Component {
         <Router>
           <Route path="/" component={NavBar}/>
           <Switch>
-            <Route exact path="/rewards" >
-              <RewardsContainer />
+            <Route path="/rewards" >
+              <RewardsPage />
             </Route>
             <Route path="/events">
-              <EventsContainer />
+              <EventsPage />
+            </Route>
+            <Route path="/signup">
+              <SignupPage />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <Route path="/logout">
+              {/* logout??? */}
             </Route>
           </Switch>
         </Router>

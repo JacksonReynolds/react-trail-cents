@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import fetchEvents from '../actions/events/fetch'
 import EventsList from '../components/events/EventsList'
 
-class EventsContainer extends Component {
+class EventsPage extends Component {
 
     componentDidMount() {
         this.props.fetchEvents()
@@ -22,4 +22,4 @@ const mapStateToProps = ({events}) => {
     return {events}
 }
 
-export default connect(mapStateToProps,{fetchEvents})(EventsContainer)
+export default connect(mapStateToProps,{fetchEvents})(EventsPage)

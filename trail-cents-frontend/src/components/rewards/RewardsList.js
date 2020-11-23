@@ -1,7 +1,7 @@
 import React from 'react'
 import Reward from './Reward'
 
-const RewardsList = () => {
+const RewardsList = (props) => {
     return (
         <div>
             

@@ -13,4 +13,10 @@ class RewardsContainer extends Component {
     }
 }
 
-export default connect()(RewardsContainer)
+const mapStateToProps = ({rewards}) => {
+    return {
+        rewards
+    }
+}
+
+export default connect(mapStateToProps, {fetchRewards})(RewardsContainer)

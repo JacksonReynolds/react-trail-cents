@@ -3,9 +3,9 @@ import Reward from './Reward'
 
 const RewardsList = (props) => {
     return (
-        <div>
-            
-        </div>
+        <ul>
+           {props.rewards.map(r => <Reward key={r.id} id={r.id} reward={r}/>)} 
+        </ul>
     )
 }
 

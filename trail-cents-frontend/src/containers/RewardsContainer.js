@@ -1,9 +1,14 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import RewardsList from '../components/rewards/RewardsList'
-import Reward from '../components/rewards/Reward'
+import fetchRewards from '../actions/rewards/fetch'
 import { connect } from 'react-redux'
 
-class RewardsContainer extends Component {
+class RewardsContainer extends PureComponent {
+
+    componentDidMount() {
+        this.props.fetchRewards()
+    }
+
     render() {
         return (
             <div className="rewards-container">

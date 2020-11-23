@@ -1,10 +1,11 @@
 import React from 'react'
 
-const Reward = () => {
+const Reward = (props) => {
+    // debugger
     return (
-        <div>
-            
-        </div>
+        <li>
+            {props.reward.attributes.desc}
+        </li>
     )
 }
 

@@ -22,7 +22,7 @@ const store = createStore(rootReducer, initialState, compose(applyMiddleware(thu
 ReactDOM.render(
   <Router>
     <Provider store={store}> 
-      <App />
+      <App className="app"/>
     </Provider>
   </Router>,
   document.getElementById('root')

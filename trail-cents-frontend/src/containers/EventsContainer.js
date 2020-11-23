@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import fetchEvents from '../actions/events/fetch'
 
 class EventsContainer extends Component {
+
+    componentDidMount() {
+        this.props.fetchEvents()
+    }
+
     render() {
         return (
             <div>
@@ -10,4 +17,8 @@ class EventsContainer extends Component {
     }
 }
 
-export default EventsContainer
+const mapStateToProps = ({events}) => {
+    return {events}
+}
+
+export default connect(mapStateToProps,{fetchEvents})(EventsContainer)

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import LoginForm from '../components/user/LoginForm'
 
 class LoginPage extends Component {
     render() {
         return (
             <div>
-                
+                <LoginForm />
             </div>
         )
     }

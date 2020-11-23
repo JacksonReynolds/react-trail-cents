@@ -1,14 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { PureComponent } from 'react'
 
-class SignupPage extends Component {
+export default class LoginForm extends PureComponent {
     constructor() {
         super()
         this.state = {
-            username: '',
             email: '',
-            password: '',
-            confirmPassword: ''
+            password: ''
         }
     }
 
@@ -23,13 +20,8 @@ class SignupPage extends Component {
     render() {
         return (
             <form>
-                <label>New Volunteer Signup Form</label><br/>
-                <label>Username: </label>
-                <input 
-                    type="text" 
-                    name="username" 
-                    onChange={this.handleChange} 
-                    value={this.state.username}/><br/>
+                <label>Login Form</label><br/>
+                
                 <label>Email: </label>
                 <input 
                     type="text" 
@@ -42,12 +34,7 @@ class SignupPage extends Component {
                     name="password"
                     onChange={this.handleChange}
                     value={this.state.password}/><br/>
-                <label>Confirm Password: </label>
-                <input
-                    type="confirmPassword"
-                    name="confirmPassword"
-                    onChange={this.handleChange}
-                    value={this.state.confirmPassword}/><br/>
+               
                 <input 
                     type="submit"
                     value="Submit"/>
@@ -56,5 +43,3 @@ class SignupPage extends Component {
         )
     }
 }
-
-export default connect()(SignupPage)

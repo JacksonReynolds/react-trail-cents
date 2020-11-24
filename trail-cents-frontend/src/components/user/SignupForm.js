@@ -21,8 +21,13 @@ export default class SignupForm extends PureComponent {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(e)
         this.props.addUser(this.state)
+        this.setState({
+            username: '',
+            email: '',
+            password: '',
+            password_confirmation: ''
+        })
     }
 
     render() {

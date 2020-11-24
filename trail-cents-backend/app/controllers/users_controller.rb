@@ -4,6 +4,8 @@ class UsersController < ApplicationController
         user = User.new(user_params)
         if user.save
             render json: UserSerializer.new(user)
+        else
+            render json: {errors: user.errors.full_messages}
         end
     end
 

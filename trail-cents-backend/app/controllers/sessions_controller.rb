@@ -1,14 +1,12 @@
 class SessionsController < ApplicationController
     def create
-        user = User.find_by(params[:email])
-        if user && user.authenticate(params[:password])
-            created_jwt = issue_token({id: user.id})
-            cookies.signed[:jwt] = {value: created_jwt, httponly: true}
+        user = User.find_by(email: params[:user][:email])
+        if user && user.authenticate(params[:user][:password])
             render json: UserSerializer.new(user)
         elsif user
             render json: {errors: user.errors.full_messages}
         else
-            render 
+            render json: {errors: ["Incorrect email/password combo"]}
         end
     end
 

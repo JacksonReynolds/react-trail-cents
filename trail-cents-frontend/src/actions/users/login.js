@@ -8,7 +8,6 @@ export default function loginUser(user) {
         fetch("http://localhost:3000/sessions", options)
          .then(r => r.json())
          .then((user) => {
-             debugger
             if (user.errors) {
                 dispatch({type: "USER_ERROR", payload: user})
             } else {

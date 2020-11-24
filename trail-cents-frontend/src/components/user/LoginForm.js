@@ -17,14 +17,14 @@ export default class LoginForm extends PureComponent {
         }})
     }
 
-    handelSubmit = e => {
-        e.preventDEfault()
+    handleSubmit = e => {
+        e.preventDefault()
         this.props.loginUser(this.state)
     }
 
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <label>Login Form</label><br/>
                 
                 <label>Email: </label>

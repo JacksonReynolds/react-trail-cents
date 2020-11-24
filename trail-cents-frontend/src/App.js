@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import NavBar from './components/NavBar.js'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import RewardsPage from './containers/RewardsPage'
@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container'
 import SignupPage from './containers/SignupPage'
 import LoginPage from './containers/LoginPage'
 
-class App extends Component {
+class App extends PureComponent {
 
   render() {
     return (
@@ -26,6 +26,9 @@ class App extends Component {
             </Route>
             <Route path="/login">
               <LoginPage />
+            </Route>
+            <Route path="logout">
+              {}
             </Route>
           </Switch>
         </Router>

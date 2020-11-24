@@ -28,7 +28,7 @@ class App extends PureComponent {
               <LoginPage />
             </Route>
             <Route path="logout">
-              {}
+              {this.props.removeUser() && }
             </Route>
           </Switch>
         </Router>

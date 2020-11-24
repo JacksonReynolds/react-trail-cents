@@ -19,9 +19,15 @@ export default class SignupForm extends PureComponent {
         }})
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(e)
+        this.props.addUser()
+    }
+
     render() {
         return (
-            <form>
+            <form onSubmit={this.props.handleSubmit}>
                 <label>New Volunteer Signup Form</label><br/>
                 <label>Username: </label>
                 <input 

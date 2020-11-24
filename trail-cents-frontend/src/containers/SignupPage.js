@@ -5,20 +5,22 @@ import Alert from 'react-bootstrap/Alert'
 import addUser from '../actions/users/add'
 
 class SignupPage extends PureComponent {
-    constructor() {
-        super()
-        this.state = {}
-    }
-
     render() {
+        let {user, addUser} = this.props
         return (
             <div>
-                {Array.isArray(this.state.errors) && <Alert>Alert!</Alert>}
-                <SignupForm addUser={this.props.addUser} />
+                {user.errors && <Alert variant={'warning'}><ul>{user.errors.map(e => <li>{e}</li>)}</ul></Alert>}
+                <SignupForm addUser={addUser} />
             </div>
         )
         
     }
 }
 
-export default connect(null, {addUser})(SignupPage)
+const mapStateToProps = ({user}) => {
+    return {
+        user
+    }
+}
+
+export default connect(mapStateToProps, {addUser})(SignupPage)

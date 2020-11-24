@@ -17,6 +17,11 @@ export default class LoginForm extends PureComponent {
         }})
     }
 
+    handelSubmit = e => {
+        e.preventDEfault()
+        this.props.loginUser(this.state)
+    }
+
     render() {
         return (
             <form>

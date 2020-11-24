@@ -5,7 +5,8 @@ export const user = (state = {}, action) => {
         case "REMOVE_USER":
             return {}
         case "USER_ERROR":
-            return {errors: action.payload.user.errors}
+            debugger
+            return {errors: action.payload.errors}
         default: return state
     }
 }

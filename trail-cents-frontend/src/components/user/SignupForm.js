@@ -7,7 +7,7 @@ export default class SignupForm extends PureComponent {
             username: '',
             email: '',
             password: '',
-            confirmPassword: ''
+            password_confirmation: ''
         }
     }
 
@@ -22,12 +22,12 @@ export default class SignupForm extends PureComponent {
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(e)
-        this.props.addUser()
+        this.props.addUser(this.state)
     }
 
     render() {
         return (
-            <form onSubmit={this.props.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 <label>New Volunteer Signup Form</label><br/>
                 <label>Username: </label>
                 <input 
@@ -50,9 +50,9 @@ export default class SignupForm extends PureComponent {
                 <label>Confirm Password: </label>
                 <input
                     type="password"
-                    name="confirmPassword"
+                    name="password_confirmation"
                     onChange={this.handleChange}
-                    value={this.state.confirmPassword}/><br/>
+                    value={this.state.password_confirmation}/><br/>
                 <input 
                     type="submit"
                     value="Submit"/>

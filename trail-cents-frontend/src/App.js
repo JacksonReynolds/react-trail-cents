@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import NavBar from './components/NavBar.js'
-import { connect } from 'react-redux'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import RewardsPage from './containers/RewardsPage'
 import EventsPage from './containers/EventsPage'
@@ -28,9 +27,6 @@ class App extends Component {
             <Route path="/login">
               <LoginPage />
             </Route>
-            <Route path="/logout">
-              {/* logout??? */}
-            </Route>
           </Switch>
         </Router>
       </Container>
@@ -39,10 +35,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({user}) => {
-  return {
-    user
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default App

@@ -1,59 +1,23 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import SignupForm from '../components/user/SignupForm'
 
-class SignupPage extends Component {
+
+class SignupPage extends PureComponent {
     constructor() {
         super()
         this.state = {
-            username: '',
-            email: '',
-            password: '',
-            confirmPassword: ''
+            errors: []
         }
-    }
-
-    handleChange = e => {
-        this.setState(prevState => {
-            return {
-            ...prevState,
-            [e.target.name]: e.target.value
-        }})
     }
 
     render() {
         return (
-            <form>
-                <label>New Volunteer Signup Form</label><br/>
-                <label>Username: </label>
-                <input 
-                    type="text" 
-                    name="username" 
-                    onChange={this.handleChange} 
-                    value={this.state.username}/><br/>
-                <label>Email: </label>
-                <input 
-                    type="text" 
-                    name="email" 
-                    onChange={this.handleChange} 
-                    value={this.state.email}/><br/>
-                <label>Password: </label>
-                <input 
-                    type="password"
-                    name="password"
-                    onChange={this.handleChange}
-                    value={this.state.password}/><br/>
-                <label>Confirm Password: </label>
-                <input
-                    type="confirmPassword"
-                    name="confirmPassword"
-                    onChange={this.handleChange}
-                    value={this.state.confirmPassword}/><br/>
-                <input 
-                    type="submit"
-                    value="Submit"/>
-
-            </form>
+            <div>
+                <SignupForm />
+            </div>
         )
+        
     }
 }
 

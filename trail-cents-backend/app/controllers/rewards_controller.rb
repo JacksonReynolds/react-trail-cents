@@ -1,5 +1,5 @@
 class RewardsController < ApplicationController
     def index
-        render json: RewardSerializer.new(Reward.all)
+        render json: rewards
     end
 end

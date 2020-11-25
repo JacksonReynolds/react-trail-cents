@@ -12,8 +12,7 @@ import { connect } from 'react-redux'
 class App extends PureComponent {
 
   isLoggedIn = () => {
-    debugger
-    return !!this.props.user.id
+    return !!this.props.user.userId
   }
 
   handleLogout = (e) => {
@@ -22,12 +21,14 @@ class App extends PureComponent {
   }
 
   render() {
-    debugger
     return (
       <Container>
         <Router>
           <Route path="/" render={() => <NavBar handleLogout={this.handleLogout} />}/>
           <Switch>
+            <Route exact path="/">
+              <h1>HOME!</h1>
+            </Route>
             <Route path="/rewards" >
               <RewardsPage />
             </Route>
@@ -35,10 +36,10 @@ class App extends PureComponent {
               <EventsPage />
             </Route>
             <Route path="/signup">
-              {this.isLoggedIn ? <Redirect to="/" /> : <LoginPage />}
+              {this.isLoggedIn() ? <Redirect to="/" /> : <SignupPage />}
             </Route>
             <Route path="/login">
-              {this.isLoggedIn ? <Redirect to="/" /> : <LoginPage />}
+              {this.isLoggedIn() ? <Redirect to="/" /> : <LoginPage />}
             </Route>
             <Route path="/logout">
               <Redirect to="/"/>

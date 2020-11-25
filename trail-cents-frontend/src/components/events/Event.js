@@ -4,7 +4,7 @@ const Event = (props) => {
     // debugger
     return (
         <li>
-            {props.event.attributes.title}
+            {props.event.title}
         </li>
     )
 }

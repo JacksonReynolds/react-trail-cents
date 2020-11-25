@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 class App extends PureComponent {
 
   isLoggedIn = () => {
-    return !!this.props.user.userId
+    return !!this.props.user.id
   }
 
   handleLogout = (e) => {

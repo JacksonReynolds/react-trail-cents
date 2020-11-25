@@ -4,7 +4,7 @@ const Reward = (props) => {
     // debugger
     return (
         <li>
-            {props.reward.attributes.desc}
+            {props.reward.desc}
         </li>
     )
 }

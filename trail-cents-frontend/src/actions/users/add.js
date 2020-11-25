@@ -11,7 +11,7 @@ export default function addUser(user) {
             if (user.errors) {
                 dispatch({type: "USER_ERROR", payload: user})
             } else {
-                dispatch({type: "ADD_USER", payload: user.data})
+                dispatch({type: "ADD_USER", payload: user})
             }
          })
     }

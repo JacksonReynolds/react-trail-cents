@@ -1,20 +1,19 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import SignupForm from '../components/user/SignupForm'
-import Alert from 'react-bootstrap/Alert'
 import addUser from '../actions/users/add'
+import Error from '../components/user/Error'
 
-class SignupPage extends PureComponent {
-    render() {
-        let {user, addUser} = this.props
-        return (
-            <div>
-                {user.errors && <Alert variant={'warning'}><ul>{user.errors.map(e => <li>{e}</li>)}</ul></Alert>}
-                <SignupForm addUser={addUser} />
-            </div>
-        )
+const SignupPage = props => {
+    let {user, addUser} = props
+    return (
+        <div>
+            {<Error errors={user.errors}/>}
+            <SignupForm addUser={addUser} />
+        </div>
+    )
         
-    }
+    
 }
 
 const mapStateToProps = ({user}) => {

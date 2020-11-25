@@ -1,19 +1,32 @@
 import React, { PureComponent } from 'react'
 import NavBar from './components/NavBar.js'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import RewardsPage from './containers/RewardsPage'
 import EventsPage from './containers/EventsPage'
 import Container from 'react-bootstrap/Container'
 import SignupPage from './containers/SignupPage'
 import LoginPage from './containers/LoginPage'
+import logoutUser from './actions/users/logout'
+import { connect } from 'react-redux'
 
 class App extends PureComponent {
 
+  isLoggedIn = () => {
+    debugger
+    return !!this.props.user.id
+  }
+
+  handleLogout = (e) => {
+    // clear localStorage?
+    this.props.logoutUser()
+  }
+
   render() {
+    debugger
     return (
       <Container>
         <Router>
-          <Route path="/" component={NavBar}/>
+          <Route path="/" render={() => <NavBar handleLogout={this.handleLogout} />}/>
           <Switch>
             <Route path="/rewards" >
               <RewardsPage />
@@ -22,13 +35,13 @@ class App extends PureComponent {
               <EventsPage />
             </Route>
             <Route path="/signup">
-              <SignupPage />
+              {this.isLoggedIn ? <Redirect to="/" /> : <LoginPage />}
             </Route>
             <Route path="/login">
-              <LoginPage />
+              {this.isLoggedIn ? <Redirect to="/" /> : <LoginPage />}
             </Route>
-            <Route path="logout">
-              {this.props.removeUser() && }
+            <Route path="/logout">
+              <Redirect to="/"/>
             </Route>
           </Switch>
         </Router>
@@ -38,4 +51,8 @@ class App extends PureComponent {
   }
 }
 
-export default App
+const mapStateToProps = ({user}) => {
+  return {user}
+}
+
+export default connect(mapStateToProps, {logoutUser})(App)

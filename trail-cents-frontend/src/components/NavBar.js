@@ -6,9 +6,10 @@ import { NavDropdown } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 class NavBar extends PureComponent {
+
     render() {
-        let {user} = this.props
-        debugger
+        let {user, handleLogout} = this.props
+        // debugger
         return (
             <>
                 <Navbar bg="dark" variant="dark">
@@ -23,7 +24,7 @@ class NavBar extends PureComponent {
                             </NavDropdown>
                             {!user.username && <Nav.Link as={Link} to="/login">Login</Nav.Link>}
                             {!user.username && <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link>}
-                            {user.username && <Nav.Link as={Link} to="/logout">Logout</Nav.Link>}
+                            {user.username && <Nav.Link as={Link} to="/logout" onClick={handleLogout}>Logout</Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
                     

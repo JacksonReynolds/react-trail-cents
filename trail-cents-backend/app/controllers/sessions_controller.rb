@@ -3,8 +3,6 @@ class SessionsController < ApplicationController
         user = User.find_by(email: params[:user][:email])
         if user && user.authenticate(params[:user][:password])
             render json: user
-        elsif user
-            render json: {errors: user.errors.full_messages}
         else
             render json: {errors: ["Incorrect email/password combo"]}
         end

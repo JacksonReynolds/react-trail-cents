@@ -1,5 +1,4 @@
 export const user = (state = {}, action) => {
-    debugger
     switch (action.type) {
         case "ADD_USER":
             return action.payload

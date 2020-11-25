@@ -1,3 +1,3 @@
 class RewardSerializer < ActiveModel::Serializer
-  attributes :desc, :cost, :num_available
+  attributes :id, :desc, :cost, :num_available
 end

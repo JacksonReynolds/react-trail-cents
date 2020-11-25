@@ -13,7 +13,7 @@ class Error extends PureComponent {
         let {errors} = this.props
         return (
             <>
-                {errors && <Alert variant={'warning'}><ul>{errors.map(e => <li>{e}</li>)}</ul></Alert>}
+                {errors && <Alert variant={'warning'}><ul>{errors.map(e => <li key={e}>{e}</li>)}</ul></Alert>}
             </>
         )
     }

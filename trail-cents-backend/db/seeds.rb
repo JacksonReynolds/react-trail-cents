@@ -17,7 +17,8 @@ events =
         category: "trail",
         start: Time.new(2020, 12, 15, 8, 0,0, '-05:00'),
         end:  Time.new(2020, 12, 15, 12,0,0, '-05:00'),
-        duration: 4
+        duration: 4,
+        img_src: "https://es.pinkbike.org/246/sprt/i/trailforks/trailforks_avatar.png"
     },
     {
         title: "Hells Kitchen Trail Day",
@@ -28,7 +29,8 @@ events =
         category: "trail",
         start: Time.new(2020, 12, 15, 8, 0,0, '-05:00'),
         end:  Time.new(2020, 12, 15, 12,0,0, '-05:00'),
-        duration: 4
+        duration: 4,
+        img_src: "https://es.pinkbike.org/246/sprt/i/trailforks/trailforks_avatar.png"
     },
     {
         title: "Dogwood Trail Day",
@@ -39,7 +41,8 @@ events =
         category: "trail",
         start: Time.new(2020, 12, 15, 7, 30,0, '-05:00'),
         end:  Time.new(2020, 12, 15, 12,0,0, '-05:00'),
-        duration: 4.5
+        duration: 4.5,
+        img_src: "https://es.pinkbike.org/246/sprt/i/trailforks/trailforks_avatar.png"
     },
     {
         title: "Stone Fort Trail Day",
@@ -50,7 +53,8 @@ events =
         category: "trail",
         start: Time.new(2020, 12, 15, 9, 0,0, '-05:00'),
         end:  Time.new(2020, 12, 15, 14,0,0, '-05:00'),
-        duration: 5
+        duration: 5,
+        img_src: "https://es.pinkbike.org/246/sprt/i/trailforks/trailforks_avatar.png"
     }]
 
 rewards = [

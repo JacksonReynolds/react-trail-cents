@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_22_185400) do
     t.time "start"
     t.time "end"
     t.decimal "duration"
+    t.string "img_src"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

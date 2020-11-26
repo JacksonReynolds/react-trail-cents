@@ -10,6 +10,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.time :start
       t.time :end
       t.decimal :duration
+      t.string :img_src
 
       t.timestamps
     end

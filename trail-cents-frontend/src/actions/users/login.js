@@ -7,12 +7,13 @@ export default function loginUser(user) {
           }
         fetch("http://localhost:3000/auth", options)
          .then(r => r.json())
-         .then((user) => {
-             debugger
-            if (user.errors) {
-                dispatch({type: "USER_ERROR", payload: user})
+         .then((response) => {
+            if (response.errors) {
+                dispatch({type: "USER_ERROR", payload: response.errors})
             } else {
-                dispatch({type: "ADD_USER", payload: user})
+                debugger
+                localStorage.Authorization = response.jwt
+                dispatch({type: "ADD_USER", payload: response.user})
             }
         })
     }

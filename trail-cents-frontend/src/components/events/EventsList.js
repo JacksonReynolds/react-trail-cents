@@ -1,11 +1,16 @@
 import React from 'react'
 import Event from './Event'
+import CardDeck from 'react-bootstrap/CardDeck'
+import Container from 'react-bootstrap/Container'
 
 const EventsList = (props) => {
     return (
-        <ul>
-            {props.events.map(e => <Event key={e.id} id={e.id} event={e} />)}
-        </ul>
+        <Container className="events-list">
+            <CardDeck>
+                {props.events.map(e => <Event key={e.id} event={e}/>)}
+            </CardDeck>
+        </Container>
+        
     )
 }
 

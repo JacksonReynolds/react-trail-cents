@@ -7,11 +7,12 @@ export default function addUser(user) {
           }
         fetch("http://localhost:3000/users", options)
          .then(r => r.json())
-         .then((user) => {
-            if (user.errors) {
-                dispatch({type: "USER_ERROR", payload: user.errors})
+         .then((response) => {
+            if (response.errors) {
+                dispatch({type: "USER_ERROR", payload: response.errors})
             } else {
-                dispatch({type: "ADD_USER", payload: user})
+                localStorage.jwt = response.jwt
+                dispatch({type: "ADD_USER", payload: response.user})
             }
          })
     }

@@ -7,9 +7,27 @@ import Container from 'react-bootstrap/Container'
 import SignupPage from './containers/SignupPage'
 import LoginPage from './containers/LoginPage'
 import logoutUser from './actions/users/logout'
+import loginUser from './actions/users/login'
 import { connect } from 'react-redux'
 
 class App extends PureComponent {
+
+  componentDidMount() {
+    if (localStorage.jwt) {
+      let options = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.jwt}`
+        }
+      }
+      fetch("http://localhost:3000/auth", options)
+       .then(r => r.json())
+       .then((user) => {
+         debugger
+        //  this.props.loginUser(user)
+       })
+    }
+  }
 
   isLoggedIn = () => {
     return !!this.props.user.id
@@ -55,4 +73,4 @@ const mapStateToProps = ({user}) => {
   return {user}
 }
 
-export default connect(mapStateToProps, {logoutUser})(App)
+export default connect(mapStateToProps, {logoutUser, loginUser})(App)

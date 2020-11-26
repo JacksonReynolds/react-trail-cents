@@ -11,7 +11,7 @@ export default function loginUser(user) {
             if (response.errors) {
                 dispatch({type: "USER_ERROR", payload: response.errors})
             } else {
-                localStorage.Authorization = response.jwt
+                localStorage.jwt = response.jwt
                 dispatch({type: "ADD_USER", payload: response.user})
             }
         })

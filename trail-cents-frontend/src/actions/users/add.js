@@ -9,7 +9,7 @@ export default function addUser(user) {
          .then(r => r.json())
          .then((user) => {
             if (user.errors) {
-                dispatch({type: "USER_ERROR", payload: user})
+                dispatch({type: "USER_ERROR", payload: user.errors})
             } else {
                 dispatch({type: "ADD_USER", payload: user})
             }

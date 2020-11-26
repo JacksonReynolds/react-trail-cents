@@ -1,8 +1,8 @@
 class AuthController < ApplicationController
     def create
+        # binding.pry
         user = User.find_by(email: login_params[:email])
         if user && user.authenticate(params[:user][:password])
-            binding.pry
             token = encode_token(user.id)
             render json: {user: user, jwt: token}
         else

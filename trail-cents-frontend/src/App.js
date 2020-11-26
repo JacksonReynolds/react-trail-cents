@@ -16,7 +16,7 @@ class App extends PureComponent {
   }
 
   handleLogout = (e) => {
-    // clear localStorage?
+    localStorage.clear()
     this.props.logoutUser()
   }
 

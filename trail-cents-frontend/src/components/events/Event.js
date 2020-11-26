@@ -10,7 +10,8 @@ const Event = (props) => {
                 <Card.Body>
                     <Card.Title>{props.event.title}</Card.Title>
                     <Card.Text>
-                        {props.event.desc}
+                        <text>{props.event.desc}</text> <br/>
+                        <text>Points Earned: {props.event.duration}</text>
                     </Card.Text>
                 </Card.Body>
             </Card>

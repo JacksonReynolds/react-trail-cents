@@ -47,7 +47,6 @@ class App extends PureComponent {
           </Switch>
         </Router>
       </Container>
-      
     )
   }
 }

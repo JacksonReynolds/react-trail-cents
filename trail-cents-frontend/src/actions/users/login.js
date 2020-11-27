@@ -1,4 +1,5 @@
 export default function loginUser(user) {
+    // debugger
     return (dispatch) => {
         let options = {
             method: "POST",

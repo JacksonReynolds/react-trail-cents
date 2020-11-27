@@ -19,6 +19,7 @@ export default class LoginForm extends PureComponent {
 
     handleSubmit = e => {
         e.preventDefault()
+        // debugger
         this.props.loginUser(this.state)
         this.setState({
             email: '',

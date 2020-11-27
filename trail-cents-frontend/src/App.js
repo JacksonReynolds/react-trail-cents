@@ -6,26 +6,17 @@ import EventsPage from './containers/EventsPage'
 import Container from 'react-bootstrap/Container'
 import SignupPage from './containers/SignupPage'
 import LoginPage from './containers/LoginPage'
+
+//actions
 import logoutUser from './actions/users/logout'
-import loginUser from './actions/users/login'
+import loginWithToken from './actions/users/loginWithToken'
 import { connect } from 'react-redux'
 
 class App extends PureComponent {
 
   componentDidMount() {
     if (localStorage.jwt) {
-      let options = {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${localStorage.jwt}`
-        }
-      }
-      fetch("http://localhost:3000/auth", options)
-       .then(r => r.json())
-       .then((user) => {
-         debugger
-        //  this.props.loginUser(user)
-       })
+      this.props.loginWithToken(localStorage.jwt)
     }
   }
 
@@ -73,4 +64,4 @@ const mapStateToProps = ({user}) => {
   return {user}
 }
 
-export default connect(mapStateToProps, {logoutUser, loginUser})(App)
+export default connect(mapStateToProps, {logoutUser, loginWithToken})(App)

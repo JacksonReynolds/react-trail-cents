@@ -1,13 +1,17 @@
 class AuthController < ApplicationController
 
     def create
-        render json: current_user if current_user
-        user = User.find_by(email: login_params[:email])
-        if user && user.authenticate(login_params[:password])
-            token = encode_token(user.id)
-            render json: {user: user, jwt: token}
+        if current_user
+            render json: {user: current_user}
         else
-            render json: {errors: ["Incorrect email/password combo"]}
+            user = User.find_by(email: login_params[:email])
+            if user && user.authenticate(login_params[:password])
+                payload = {user_id: user.id}
+                token = encode_token(payload)
+                render json: {user: user, jwt: token}
+            else
+                render json: {errors: ["Incorrect email/password combo"]}
+            end
         end
     end
 
@@ -16,4 +20,5 @@ class AuthController < ApplicationController
     def login_params
         params.require(:user).permit(:email, :password)
     end
+
 end

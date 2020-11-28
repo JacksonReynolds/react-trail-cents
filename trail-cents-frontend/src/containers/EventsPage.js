@@ -21,6 +21,7 @@ class EventsPage extends Component {
     }
 
     handleClick = event => {
+        console.log('hit')
         // this.props.volunteerForEvent(this.props.user.id, event.id)
     }
 

@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav'
 import {Link} from 'react-router-dom'
 import { NavDropdown } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import NavUserBadge from './NavUserBadge'
 
 class NavBar extends PureComponent {
 
@@ -22,13 +23,8 @@ class NavBar extends PureComponent {
                                 <NavDropdown.Item as={Link} to="/events">Events</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/volunteer">Volunteer</NavDropdown.Item>
                             </NavDropdown>
-                            {!user.username && <Nav.Link as={Link} to="/login">Login</Nav.Link>}
-                            {!user.username && <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link>}
-                            {user.username && <Nav.Link as={Link} to="/logout" onClick={handleLogout}>Logout</Nav.Link>}
                         </Nav>
-                        <Navbar.Text>
-                            Signed in as: <Link to= '/'>{user.username}</Link> | {user.points} Points
-                        </Navbar.Text>
+                        <NavUserBadge user={user} handleLogout={handleLogout}/>
                     </Navbar.Collapse>
                     
                 </Navbar>

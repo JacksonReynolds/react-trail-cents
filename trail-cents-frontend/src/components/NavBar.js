@@ -26,6 +26,9 @@ class NavBar extends PureComponent {
                             {!user.username && <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link>}
                             {user.username && <Nav.Link as={Link} to="/logout" onClick={handleLogout}>Logout</Nav.Link>}
                         </Nav>
+                        <Navbar.Text>
+                            Signed in as: <Link to= '/'>{user.username}</Link> | {user.points} Points
+                        </Navbar.Text>
                     </Navbar.Collapse>
                     
                 </Navbar>

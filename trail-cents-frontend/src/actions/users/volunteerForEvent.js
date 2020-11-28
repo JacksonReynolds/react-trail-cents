@@ -8,7 +8,6 @@ export default function volunteerForEvent(userId, eventId) {
         fetch(`http://localhost:3000/users/${userId}`, options)
             .then(r => r.json())
             .then(response => {
-                debugger
                 if (response.errors) {
                     dispatch({type: "USER_ERROR", payload: response.errors})
                 } else {

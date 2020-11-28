@@ -8,7 +8,7 @@ class AuthController < ApplicationController
             if user && user.authenticate(login_params[:password])
                 payload = {user_id: user.id}
                 token = encode_token(payload)
-                render json: {user: UserSerializer.new(user), jwt: token}
+                render json: {user: {id: user.id, username: user.username, email: user.email, points: user.points}, jwt: token}
             else
                 render json: {errors: ["Incorrect email/password combo"]}
             end

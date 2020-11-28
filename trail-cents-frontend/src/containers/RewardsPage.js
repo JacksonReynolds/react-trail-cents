@@ -1,27 +1,49 @@
 import React, { PureComponent } from 'react'
-import RewardsList from '../components/rewards/RewardsList'
-import fetchRewards from '../actions/rewards/fetch'
+// import RewardsList from '../components/rewards/RewardsList'
 import { connect } from 'react-redux'
+import Reward from '../components/rewards/Reward'
+import CardDeck from 'react-bootstrap/CardDeck'
+
+// actions
+import fetchRewards from '../actions/rewards/fetch'
+import withdrawPoints from '../actions/users/withdrawPoints'
+
 
 class RewardsPage extends PureComponent {
+    constructor() {
+        super()
+        this.state = {
+            highlightedReward: null
+        }
+    }
 
     componentDidMount() {
-        this.props.fetchRewards()
+        if (this.props.rewards.length === 0) {
+            this.props.fetchRewards()
+        }
+    }
+
+    purchaseReward = (reward) => {
+        console.log(`buy this ${reward.desc} bitch!`)
+        this.props.withdrawPoints(this.props.user.id, reward.id)
+        // this.props.withdrawReward()
     }
 
     render() {
         return (
             <div className="rewards-container">
-                <RewardsList rewards={this.props.rewards}/>
+                <CardDeck>
+                    {this.props.rewards.map(r => <Reward highlighted={null} purchaseReward={this.purchaseReward} key={r.id} reward={r}/>)}
+                </CardDeck>
             </div>
         )
     }
 }
 
-const mapStateToProps = ({rewards}) => {
+const mapStateToProps = ({rewards, user}) => {
     return {
-        rewards
+        user, rewards
     }
 }
 
-export default connect(mapStateToProps, {fetchRewards})(RewardsPage)
+export default connect(mapStateToProps, {fetchRewards, withdrawPoints})(RewardsPage)

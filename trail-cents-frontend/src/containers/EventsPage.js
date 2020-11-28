@@ -4,6 +4,7 @@ import fetchEvents from '../actions/events/fetch'
 
 import CardDeck from 'react-bootstrap/CardDeck'
 import Event from '../components/events/Event'
+// import volunteerForEvent from '../actions/users/volunterForEvent
 
 class EventsPage extends Component {
     constructor() {
@@ -19,6 +20,9 @@ class EventsPage extends Component {
         }
     }
 
+    handleClick = event => {
+        // this.props.volunteerForEvent(this.props.user.id, event.id)
+    }
 
     render() {
         return (
@@ -26,7 +30,7 @@ class EventsPage extends Component {
                 <CardDeck>
                     {this.props.events.map(e => <Event key={e.id} event={e}/>)}
                 </CardDeck>  
-                {this.state.focusedEvent ? <Event event={this.state.focusedEvent} focused={true}/> : null}          
+                {this.state.focusedEvent ? <Event handleClick={this.handleClick} event={this.state.focusedEvent} focused={true}/> : null}          
             </div>
         )
     }

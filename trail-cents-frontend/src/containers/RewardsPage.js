@@ -6,7 +6,6 @@ import CardDeck from 'react-bootstrap/CardDeck'
 
 // actions
 import fetchRewards from '../actions/rewards/fetch'
-import withdrawPoints from '../actions/users/withdrawPoints'
 import purchaseReward from '../actions/rewards/purchaseReward'
 
 
@@ -39,4 +38,4 @@ const mapStateToProps = ({rewards, user}) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchRewards, withdrawPoints, purchaseReward})(RewardsPage)
+export default connect(mapStateToProps, {fetchRewards, purchaseReward})(RewardsPage)

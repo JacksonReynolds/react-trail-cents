@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import fetchEvents from '../actions/events/fetch'
-import EventsList from '../components/events/EventsList'
+
+import CardDeck from 'react-bootstrap/CardDeck'
+import Event from '../components/events/Event'
 
 class EventsPage extends Component {
     constructor() {
         super()
         this.state = {
-            highlightedEvent: null
+            focusedEvent: null
         }
     }
 
@@ -18,11 +20,13 @@ class EventsPage extends Component {
     }
 
 
-
     render() {
         return (
             <div className="events-container">
-                <EventsList events={this.props.events}/>
+                <CardDeck>
+                    {this.props.events.map(e => <Event key={e.id} event={e}/>)}
+                </CardDeck>  
+                {this.state.focusedEvent ? <Event event={this.state.focusedEvent} focused={true}/> : null}          
             </div>
         )
     }

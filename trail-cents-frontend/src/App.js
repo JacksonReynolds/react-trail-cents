@@ -39,10 +39,10 @@ class App extends PureComponent {
               <h1>HOME!</h1>
             </Route>
             <Route path="/rewards" >
-              <RewardsPage />
+              <RewardsPage checkLoggedIn={this.isLoggedIn}/>
             </Route>
             <Route path="/events">
-              <EventsPage />
+              <EventsPage checkLoggedIn={this.isLoggedIn}/>
             </Route>
             <Route path="/signup">
               {this.isLoggedIn() ? <Redirect to="/" /> : <SignupPage />}

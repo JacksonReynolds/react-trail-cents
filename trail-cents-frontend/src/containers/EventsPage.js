@@ -4,10 +4,20 @@ import fetchEvents from '../actions/events/fetch'
 import EventsList from '../components/events/EventsList'
 
 class EventsPage extends Component {
+    constructor() {
+        super()
+        this.state = {
+            highlightedEvent: null
+        }
+    }
 
     componentDidMount() {
-        this.props.fetchEvents()
+        if (this.props.events.length === 0) {
+            this.props.fetchEvents()
+        }
     }
+
+
 
     render() {
         return (

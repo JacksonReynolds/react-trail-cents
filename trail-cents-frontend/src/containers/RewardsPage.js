@@ -7,7 +7,7 @@ import CardDeck from 'react-bootstrap/CardDeck'
 // actions
 import fetchRewards from '../actions/rewards/fetch'
 import withdrawPoints from '../actions/users/withdrawPoints'
-import withdrawReward from '../actions/rewards/withdrawReward'
+import purchaseReward from '../actions/rewards/purchaseReward'
 
 
 class RewardsPage extends PureComponent {
@@ -19,8 +19,7 @@ class RewardsPage extends PureComponent {
     }
 
     purchaseReward = (reward) => {
-        this.props.withdrawPoints(this.props.user.id, reward.id)
-        this.props.withdrawReward(reward)
+        this.props.purchaseReward(this.props.user.id, reward.id)
     }
 
     render() {
@@ -40,4 +39,4 @@ const mapStateToProps = ({rewards, user}) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchRewards, withdrawPoints, withdrawReward})(RewardsPage)
+export default connect(mapStateToProps, {fetchRewards, withdrawPoints, purchaseReward})(RewardsPage)

@@ -5,7 +5,6 @@ export const user = (state = {}, action) => {
         case "LOGOUT_USER":
             return {}
         case "UPDATE_USER":
-            debugger
             return action.payload
         case "USER_ERROR":
             return {errors: action.payload}

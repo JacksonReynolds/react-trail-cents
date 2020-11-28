@@ -12,7 +12,7 @@ export default function loginWithToken(token) {
              if (response.errors) {
                 dispatch({type: "USER_ERROR", payload: response.errors})
              } else {
-                dispatch({type: "ADD_USER", payload: response.user})
+                dispatch({type: "ADD_USER", payload: response})
              }
            })
     }

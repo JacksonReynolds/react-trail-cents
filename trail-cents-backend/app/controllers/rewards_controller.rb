@@ -8,7 +8,7 @@ class RewardsController < ApplicationController
         if reward && reward.num_available > 0
             reward.num_available--
             reward.save
-            render json: {reward: reward}
+            render json: reward
         else
             render json: {errors: ["Couldn't find that reward"]}
         end

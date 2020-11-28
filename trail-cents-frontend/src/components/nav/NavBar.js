@@ -26,7 +26,6 @@ class NavBar extends PureComponent {
                         </Nav>
                         <NavUserBadge user={user} handleLogout={handleLogout}/>
                     </Navbar.Collapse>
-                    
                 </Navbar>
             </>
         )

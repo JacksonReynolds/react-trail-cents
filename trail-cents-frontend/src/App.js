@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import NavBar from './components/NavBar.js'
+import NavBar from './components/nav/NavBar.js'
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import RewardsPage from './containers/RewardsPage'
 import EventsPage from './containers/EventsPage'

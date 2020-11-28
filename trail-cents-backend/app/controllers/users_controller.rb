@@ -11,17 +11,23 @@ class UsersController < ApplicationController
 
     def update
         user = User.find_by(id: params[:id])
-        if user
+        if user && params[:rewardId]
             reward = Reward.find_by(id: params[:rewardId])
             if reward
-                if user.points > reward.cost
-                    user.update(points: user.points - reward.cost)
+                if user.points > reward.cost && user.update(points: user.points - reward.cost)
                     render json: user
                 else
                     render json: {errors: ["You do not have enough points to purchase this item."]}
                 end
             else
                 render json: {errors: ["Couldn't find that reward"]}
+            end
+        elsif user && params[:eventId]
+            event = Event.find_by(id: params[:eventId])
+            if event && user.update(points: user.points+event.duration)
+                render json: user
+            else
+                render json: {errors: ["Couldn't find that event"]}
             end
         else
             render json: {errors: ["Couldn't find that user"]}

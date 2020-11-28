@@ -10,12 +10,6 @@ import withdrawPoints from '../actions/users/withdrawPoints'
 
 
 class RewardsPage extends PureComponent {
-    constructor() {
-        super()
-        this.state = {
-            highlightedReward: null
-        }
-    }
 
     componentDidMount() {
         if (this.props.rewards.length === 0) {
@@ -32,7 +26,7 @@ class RewardsPage extends PureComponent {
         return (
             <div className="rewards-container">
                 <CardDeck>
-                    {this.props.rewards.map(r => <Reward highlighted={null} purchaseReward={this.purchaseReward} key={r.id} reward={r}/>)}
+                    {this.props.rewards.map(r => <Reward purchaseReward={this.purchaseReward} key={r.id} reward={r}/>)}
                 </CardDeck>
             </div>
         )

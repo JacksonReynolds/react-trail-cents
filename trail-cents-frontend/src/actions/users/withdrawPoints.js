@@ -12,7 +12,7 @@ export default function withdrawPoints(userId, rewardId) {
                 if (response.errors) {
                     dispatch({type: "USER_ERROR", payload: response.errors})
                 } else {
-                    dispatch({type: "UPDATE_POINTS", payload: response.points})
+                    dispatch({type: "UPDATE_USER", payload: response})
                 }
             })
     }

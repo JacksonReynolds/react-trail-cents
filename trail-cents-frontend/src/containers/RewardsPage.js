@@ -24,7 +24,6 @@ class RewardsPage extends PureComponent {
     }
 
     purchaseReward = (reward) => {
-        console.log(`buy this ${reward.desc} bitch!`)
         this.props.withdrawPoints(this.props.user.id, reward.id)
         // this.props.withdrawReward()
     }

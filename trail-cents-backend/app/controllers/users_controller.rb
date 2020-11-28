@@ -17,7 +17,7 @@ class UsersController < ApplicationController
                 if user.points > reward.cost
                     binding.pry
                     user.update(points: user.points - reward.cost)
-                    reward.update(num_availabe: reward.num_availabe-1)
+                    reward.update(num_available: reward.num_available-1)
                     render json: user
                 else
                     render json: {errors: ["You do not have enough points to purchase this item."]}

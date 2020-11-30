@@ -2,6 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import tf from '../imgs/trailforks_avatar.png'
+import { Link } from 'react-router-dom'
 
 const EventDetail = (props) => {
     let {match, events} = props
@@ -23,6 +24,7 @@ const EventDetail = (props) => {
                     <Card.Footer>
                         {props.user.id ? <Button onClick={e => props.handleClick(event)}>Register for Event</Button> 
                                        : "Sign Up To Volunteer and Earn Rewards!"}
+                        <Button as={Link} to='/events'>Hide</Button>
                     </Card.Footer>
                 </Card>
             </div>

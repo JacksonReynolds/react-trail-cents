@@ -43,11 +43,9 @@ class App extends PureComponent {
               {this.isLoggedIn() ? <Profile user={this.props.user} /> : <HomePage />}
             </Route>
             <Route path="/rewards" >
-              <RewardsPage checkLoggedIn={this.isLoggedIn}/>
+              <RewardsPage />
             </Route>
-            <Route path="/events">
-              <EventsPage checkLoggedIn={this.isLoggedIn}/>
-            </Route>
+            <Route path="/events" render={routerProps => <EventsPage {...routerProps} />} />
             <Route path="/signup">
               {this.isLoggedIn() ? <Redirect to="/" /> : <SignupPage />}
             </Route>

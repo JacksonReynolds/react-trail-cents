@@ -2,6 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import tf from '../../imgs/trailforks_avatar.png'
 import Button from 'react-bootstrap/Button'
+import {Link} from 'react-router-dom'
 
 const Event = (props) => {
     let {event, user, handleClick} = props
@@ -20,6 +21,7 @@ const Event = (props) => {
                 <Card.Footer>
                     {user.id ? <Button onClick={e => handleClick(event)}>Register for Event</Button> 
                                    : "Sign Up To Volunteer and Earn Rewards!"}
+                    <Link to={`/events/${event.id}`}>Show Detail</Link>
                 </Card.Footer>
             </Card>
         </>

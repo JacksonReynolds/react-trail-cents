@@ -33,7 +33,7 @@ class EventsPage extends Component {
                 <CardDeck>
                     {events.map(e => <Event user={user} handleClick={this.handleClick} key={e.id} event={e}/>)}
                 </CardDeck>  
-                <Route path={`${match.url}/:movieId`} render={routerProps => <EventDetail {...routerProps} user={user} events={events}/>}  />
+                <Route path={`${match.url}/:eventId`} render={routerProps => <EventDetail {...routerProps} user={user} events={events}/>}  />
             </div>
         )
     }

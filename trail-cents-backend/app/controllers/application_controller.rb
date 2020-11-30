@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
   def encode_token(payload)
+    exp = Time.now.to_i+3600 # token will expire in one hour
+    payload["exp"] = exp
     JWT.encode(payload, ENV['secret'])
   end
 
@@ -11,6 +13,8 @@ class ApplicationController < ActionController::API
         JWT.decode(token, ENV['secret'], true, algorithm: 'HS256')
         # JWT.decode => [{ "beef"=>"steak" }, { "alg"=>"HS256" }]
       rescue JWT::DecodeError
+        nil
+      rescue JWT::ExpiredSignature
         nil
       end
     end

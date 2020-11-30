@@ -36,7 +36,7 @@ class App extends PureComponent {
           <Route path="/" render={() => <NavBar handleLogout={this.handleLogout} />}/>
           <Switch>
             <Route exact path="/">
-              <h1>HOME!</h1>
+              {this.isLoggedIn ? <Profile user={this.props.user} /> : <HomePage />}
             </Route>
             <Route path="/rewards" >
               <RewardsPage checkLoggedIn={this.isLoggedIn}/>

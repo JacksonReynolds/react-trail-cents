@@ -5,6 +5,8 @@ import fetchEvents from '../actions/events/fetch'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Event from '../components/events/Event'
 import volunteerForEvent from '../actions/users/volunteerForEvent'
+import {Route} from 'react-router-dom'
+import EventDetail from './EventDetail'
 
 class EventsPage extends Component {
     constructor() {
@@ -25,12 +27,13 @@ class EventsPage extends Component {
     }
 
     render() {
+        let {match, events, user} = this.props
         return (
             <div className="events-container">
                 <CardDeck>
-                    {this.props.events.map(e => <Event handleClick={this.handleClick} key={e.id} event={e}/>)}
+                    {events.map(e => <Event user={user} handleClick={this.handleClick} key={e.id} event={e}/>)}
                 </CardDeck>  
-                {this.state.focusedEvent ? <Event event={this.state.focusedEvent} focused={true}/> : null}          
+                <Route path={`${match.url}/:movieId`} render={routerProps => <EventDetail {...routerProps} user={user} events={events}/>}  />
             </div>
         )
     }

@@ -12,7 +12,7 @@ export default function addUser(user) {
                 dispatch({type: "USER_ERROR", payload: response.errors})
             } else {
                 localStorage.jwt = response.jwt
-                dispatch({type: "ADD_USER", payload: response})
+                dispatch({type: "ADD_USER", payload: response.user})
             }
          })
     }

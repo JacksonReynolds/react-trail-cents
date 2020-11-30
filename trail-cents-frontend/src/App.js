@@ -1,13 +1,17 @@
 import React, { PureComponent } from 'react'
 import NavBar from './components/nav/NavBar.js'
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
+
+// components
+import Profile from './components/user/Profile'
+import HomePage from './components/HomePage'
 import RewardsPage from './containers/RewardsPage'
 import EventsPage from './containers/EventsPage'
 import Container from 'react-bootstrap/Container'
 import SignupPage from './containers/SignupPage'
 import LoginPage from './containers/LoginPage'
 
-//actions
+// actions
 import logoutUser from './actions/users/logout'
 import loginWithToken from './actions/users/loginWithToken'
 import { connect } from 'react-redux'
@@ -36,7 +40,7 @@ class App extends PureComponent {
           <Route path="/" render={() => <NavBar handleLogout={this.handleLogout} />}/>
           <Switch>
             <Route exact path="/">
-              {this.isLoggedIn ? <Profile user={this.props.user} /> : <HomePage />}
+              {this.isLoggedIn() ? <Profile user={this.props.user} /> : <HomePage />}
             </Route>
             <Route path="/rewards" >
               <RewardsPage checkLoggedIn={this.isLoggedIn}/>

@@ -21,9 +21,10 @@ class EventsPage extends Component {
     }
 
     render() {
-        let {match, events, user} = this.props
+        let {errors, match, events, user} = this.props
         return (
             <div className="events-container">
+                <Error errors={errors} />
                 <CardDeck>
                     {events.map(e => <Event user={user} handleClick={this.handleClick} key={e.id} event={e}/>)}
                 </CardDeck>  
@@ -34,7 +35,7 @@ class EventsPage extends Component {
 }
 
 const mapStateToProps = ({user, events}) => {
-    return {user, events}
+    return {user, events, errors}
 }
 
 export default connect(mapStateToProps,{fetchEvents, volunteerForEvent})(EventsPage)

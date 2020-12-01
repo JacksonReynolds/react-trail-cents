@@ -24,6 +24,7 @@ class RewardsPage extends PureComponent {
     render() {
         return (
             <div className="rewards-container">
+                <Error errors={this.props.errors}/>
                 <CardDeck>
                     {this.props.rewards.map(r => <Reward purchaseReward={this.purchaseReward} key={r.id} reward={r}/>)}
                 </CardDeck>
@@ -32,9 +33,9 @@ class RewardsPage extends PureComponent {
     }
 }
 
-const mapStateToProps = ({rewards, user}) => {
+const mapStateToProps = ({rewards, user, errors}) => {
     return {
-        user, rewards
+        user, rewards, errors
     }
 }
 

@@ -7,15 +7,16 @@ const LoginPage = (props) => {
     let {loginUser} = props
     return (
         <div>
+            <Error errors={this.props.errors}/>
             <LoginForm loginUser={loginUser}/>
         </div>
     )
     
 }
 
-const mapStateToProps = ({user}) => {
+const mapStateToProps = ({user, errors}) => {
     return {
-        user
+        user, errors
     }
 }
 

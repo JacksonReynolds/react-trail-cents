@@ -40,7 +40,6 @@ class App extends PureComponent {
       <Container>
         <Router>
           <Route path="/" render={() => <NavBar handleLogout={this.handleLogout} />}/>
-          <Error errors={this.props.errors}/>
           <Switch>
             <Route exact path="/">
               {this.isLoggedIn() ? <Profile user={this.props.user} /> : <HomePage />}

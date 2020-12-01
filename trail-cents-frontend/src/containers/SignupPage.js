@@ -4,9 +4,10 @@ import SignupForm from '../components/user/SignupForm'
 import addUser from '../actions/users/add'
 
 const SignupPage = props => {
-    let {addUser} = props
+    let {addUser, errors} = props
     return (
         <div>
+            <Error errors={errors}/>
             <SignupForm addUser={addUser} />
         </div>
     )
@@ -14,9 +15,9 @@ const SignupPage = props => {
     
 }
 
-const mapStateToProps = ({user}) => {
+const mapStateToProps = ({user, errors}) => {
     return {
-        user
+        user, errors
     }
 }
 

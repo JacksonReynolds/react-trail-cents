@@ -14,5 +14,6 @@ export default function volunteerForEvent(userId, eventId) {
                     dispatch({type: "UPDATE_USER", payload: response})
                 }
             })
+            .catch(r => dispatch({type: "SERVER_ERROR", payload: ["Server Error: Please refresh. If problems persists, please contact server admin."]}))
     }
 }

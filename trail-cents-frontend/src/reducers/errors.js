@@ -8,6 +8,8 @@ export const errors = (state = {}, action) => {
             return {signupErrors: action.payload}
         case "USER_ERROR":
             return {userErrors: action.payload}
+        case "SERVER_ERROR":
+            return {serverError: action.payload}
         case "RESET_ERRORS":
             return {}
         default: return state

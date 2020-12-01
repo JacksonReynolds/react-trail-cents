@@ -15,5 +15,6 @@ export default function loginWithToken(token) {
                 dispatch({type: "ADD_USER", payload: response})
              }
            })
+           .catch(r => dispatch({type: "SERVER_ERROR", payload: ["Server Error: Please refresh. If problems persists, please contact server admin."]}))
     }
 }

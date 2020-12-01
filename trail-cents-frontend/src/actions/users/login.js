@@ -16,5 +16,6 @@ export default function loginUser(user) {
                 dispatch({type: "ADD_USER", payload: response.user})
             }
         })
+        .catch(r => dispatch({type: "SERVER_ERROR", payload: ["Server Error: Please refresh. If problems persists, please contact server admin."]}))
     }
 }

@@ -28,6 +28,8 @@ export default function purchaseReward(userId, rewardId) {
                         } else {
                             dispatch({type: "UPDATE_REWARD", payload: response})
                         }
-                    })            })
+                    }) 
+            })
+            .catch(r => dispatch({type: "SERVER_ERROR", payload: ["Server Error: Please refresh. If problems persists, please contact server admin."]}))
     }
 }

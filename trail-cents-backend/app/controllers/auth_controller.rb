@@ -1,6 +1,7 @@
 class AuthController < ApplicationController
 
     def create
+        binding.pry
         if token_response
             render json: token_response
         else

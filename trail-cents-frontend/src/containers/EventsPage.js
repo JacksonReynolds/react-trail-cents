@@ -7,6 +7,7 @@ import Event from '../components/events/Event'
 import volunteerForEvent from '../actions/users/volunteerForEvent'
 import {Route} from 'react-router-dom'
 import EventDetail from '../components/events/EventDetail'
+import Error from '../components/Error'
 
 class EventsPage extends Component {
 
@@ -34,7 +35,7 @@ class EventsPage extends Component {
     }
 }
 
-const mapStateToProps = ({user, events}) => {
+const mapStateToProps = ({user, events, errors}) => {
     return {user, events, errors}
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import SignupForm from '../components/user/SignupForm'
 import addUser from '../actions/users/add'
+import Error from '../components/Error'
 
 const SignupPage = props => {
     let {addUser, errors} = props

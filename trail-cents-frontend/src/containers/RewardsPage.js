@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Reward from '../components/rewards/Reward'
 import CardDeck from 'react-bootstrap/CardDeck'
+import Error from '../components/Error'
 
 // actions
 import fetchRewards from '../actions/rewards/fetch'

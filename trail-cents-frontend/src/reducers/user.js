@@ -6,10 +6,6 @@ export const user = (state = {}, action) => {
             return {}
         case "UPDATE_USER":
             return action.payload
-        case "USER_ERROR":
-            return {errors: action.payload}
-        case "RESET_ERRORS":
-            return {}
         default: return state
     }
 }

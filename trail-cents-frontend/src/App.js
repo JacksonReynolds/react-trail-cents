@@ -10,6 +10,7 @@ import EventsPage from './containers/EventsPage'
 import Container from 'react-bootstrap/Container'
 import SignupPage from './containers/SignupPage'
 import LoginPage from './containers/LoginPage'
+import Error from './components/Error'
 
 // actions
 import logoutUser from './actions/users/logout'
@@ -36,6 +37,7 @@ class App extends PureComponent {
   render() {
     return (
       <Container>
+        <Error />
         <Router>
           <Route path="/" render={() => <NavBar handleLogout={this.handleLogout} />}/>
           <Switch>
@@ -62,8 +64,8 @@ class App extends PureComponent {
   }
 }
 
-const mapStateToProps = ({user}) => {
-  return {user}
+const mapStateToProps = ({user, errors}) => {
+  return {user, errors}
 }
 
 export default connect(mapStateToProps, {logoutUser, loginWithToken})(App)

@@ -10,7 +10,7 @@ export default function loginUser(user) {
          .then(r => r.json())
          .then((response) => {
             if (response.errors) {
-                dispatch({type: "USER_ERROR", payload: response.errors})
+                dispatch({type: "LOGIN_ERROR", payload: response.errors})
             } else {
                 localStorage.jwt = response.jwt
                 dispatch({type: "ADD_USER", payload: response.user})

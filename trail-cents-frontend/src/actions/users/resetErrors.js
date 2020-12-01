@@ -1,3 +1,3 @@
 export default function resetErrors() {
-    return {type: "RESET_ERRORS", payload: {}}
+    return {type: "RESET_ERRORS"}
 }

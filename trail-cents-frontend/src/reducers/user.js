@@ -9,7 +9,7 @@ export const user = (state = {}, action) => {
         case "USER_ERROR":
             return {errors: action.payload}
         case "RESET_ERRORS":
-            return action.payload
+            return {}
         default: return state
     }
 }

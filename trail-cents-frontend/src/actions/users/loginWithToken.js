@@ -10,7 +10,7 @@ export default function loginWithToken(token) {
            .then(r => r.json())
            .then((response) => {
              if (response.errors) {
-                dispatch({type: "USER_ERROR", payload: response.errors})
+                dispatch({type: "TOKEN_ERROR", payload: response.errors})
              } else {
                 dispatch({type: "ADD_USER", payload: response})
              }

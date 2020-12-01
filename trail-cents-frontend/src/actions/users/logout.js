@@ -1,3 +1,3 @@
 export default function logoutUser() {
-    return {type: "LOGOUT_USER", payload: {}}
+    return {type: "LOGOUT_USER"}
 }

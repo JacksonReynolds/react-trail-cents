@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Alert from 'react-bootstrap/Alert'
-import resetErrors from '../../actions/users/resetErrors'
+import resetErrors from '../actions/users/resetErrors'
 
 class Error extends PureComponent {
 

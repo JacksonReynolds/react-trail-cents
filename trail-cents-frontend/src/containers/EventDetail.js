@@ -12,7 +12,7 @@ const EventDetail = (props) => {
         return (
             <div className={`event-${event.id}-detail`}>
                 <Card>
-                    <Card.Img variant="top" src={tf} alt="nope"/>
+                    <Card.Img variant="top" src={tf} alt="nope" maxHeight={'400px'}/>
                     <Card.Body>
                         <Card.Title>{event.title}</Card.Title>
                         <Card.Text>
@@ -23,7 +23,7 @@ const EventDetail = (props) => {
                     </Card.Body>
                     <Card.Footer>
                         {props.user.id ? <Button onClick={e => props.handleClick(event)}>Register for Event</Button> 
-                                       : "Sign Up To Volunteer and Earn Rewards!"}
+                                       : "Sign Up To Volunteer and Earn Rewards!"}<br/>
                         <Button as={Link} to='/events'>Hide</Button>
                     </Card.Footer>
                 </Card>

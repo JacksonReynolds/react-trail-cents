@@ -20,7 +20,7 @@ const Event = (props) => {
                 </Card.Body>
                 <Card.Footer>
                     {user.id ? <Button onClick={e => handleClick(event)}>Register for Event</Button> 
-                                   : "Sign Up To Volunteer and Earn Rewards!"}
+                                   : "Sign Up To Volunteer and Earn Rewards!"}<br/>
                     <Button as={Link} to={`/events/${event.id}`}>Show Detail</Button>
                     {/* <Link to={`/events/${event.id}`}>Show Detail</Link> */}
                 </Card.Footer>

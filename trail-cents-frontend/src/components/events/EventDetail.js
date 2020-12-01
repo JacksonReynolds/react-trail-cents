@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import tf from '../imgs/trailforks_avatar.png'
+import tf from '../../imgs/trailforks_avatar.png'
 import { Link } from 'react-router-dom'
 
 const EventDetail = (props) => {

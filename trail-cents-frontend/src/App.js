@@ -10,7 +10,6 @@ import EventsPage from './containers/EventsPage'
 import Container from 'react-bootstrap/Container'
 import SignupPage from './containers/SignupPage'
 import LoginPage from './containers/LoginPage'
-import Error from './components/Error'
 
 // actions
 import logoutUser from './actions/users/logout'

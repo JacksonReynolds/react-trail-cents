@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_180227) do
+ActiveRecord::Schema.define(version: 2020_12_01_153907) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_180227) do
     t.text "desc"
     t.date "date"
     t.string "category"
-    t.time "start"
-    t.time "end"
+    t.string "start"
+    t.string "end"
     t.decimal "duration"
     t.string "img_src"
     t.datetime "created_at", precision: 6, null: false

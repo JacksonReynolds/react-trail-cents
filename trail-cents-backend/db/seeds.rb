@@ -15,8 +15,8 @@ events =
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         date: Date.new(2020, 12, 15),
         category: "trail",
-        start: Time.new(2020, 12, 15, 8, 0,0, '-05:00'),
-        end:  Time.new(2020, 12, 15, 12,0,0, '-05:00'),
+        start: "8 a.m.",
+        end:  "12 p.m.",
         duration: 4,
         img_src: "https://es.pinkbike.org/246/sprt/i/trailforks/trailforks_avatar.png"
     },
@@ -27,8 +27,8 @@ events =
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         date: Date.new(2021, 1, 15),
         category: "trail",
-        start: Time.new(2020, 12, 15, 8, 0,0, '-05:00'),
-        end:  Time.new(2020, 12, 15, 12,0,0, '-05:00'),
+        start: "8 a.m.",
+        end:  "12 p.m.",
         duration: 4,
         img_src: "https://es.pinkbike.org/246/sprt/i/trailforks/trailforks_avatar.png"
     },
@@ -39,8 +39,8 @@ events =
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         date: Date.new(2020, 12, 13),
         category: "trail",
-        start: Time.new(2020, 12, 15, 7, 30,0, '-05:00'),
-        end:  Time.new(2020, 12, 15, 12,0,0, '-05:00'),
+        start: "7:30 a.m.",
+        end:  "12 p.m.",
         duration: 4.5,
         img_src: "https://es.pinkbike.org/246/sprt/i/trailforks/trailforks_avatar.png"
     },
@@ -51,8 +51,8 @@ events =
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         date: Date.new(2020, 12, 12),
         category: "trail",
-        start: Time.new(2020, 12, 15, 9, 0,0, '-05:00'),
-        end:  Time.new(2020, 12, 15, 14,0,0, '-05:00'),
+        start: "9 a.m.",
+        end: "2 p.m.",
         duration: 5,
         img_src: "https://es.pinkbike.org/246/sprt/i/trailforks/trailforks_avatar.png"
     }]

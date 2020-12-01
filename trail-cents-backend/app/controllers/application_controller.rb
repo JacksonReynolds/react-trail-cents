@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
       rescue JWT::DecodeError
         {errors: ["Invalid token, try loggin in with email and password"]}
       rescue JWT::ExpiredSignature
-        [{errors: ["Expired session, please log back in"]}]
+        {errors: ["Expired session, please log back in"]}
       end
     end
   end
@@ -24,12 +24,12 @@ class ApplicationController < ActionController::API
     request.headers['Authorization']
   end
 
-  def current_user
-    if decoded_token
+  def token_response
+    if decoded_token && decoded_token.length > 1
       user_id = decoded_token[0]['user_id']
       user = User.find_by(id: user_id)
     else
-
+      errors = decoded_token
     end
   end
 end

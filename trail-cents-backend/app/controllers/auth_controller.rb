@@ -1,8 +1,8 @@
 class AuthController < ApplicationController
 
     def create
-        if current_user
-            render json: current_user
+        if token_response
+            render json: token_response
         else
             user = User.find_by(email: login_params[:email])
             if user && user.authenticate(login_params[:password])

@@ -12,7 +12,6 @@ class Error extends PureComponent {
     render() {
         let {errors} = this.props
         let errorType = Object.keys(errors)[0]
-        debugger
         return (
             <>
                 {errorType ? <Alert variant={'warning'}><ul>{errorType}{errors[errorType].map(e => <li key={e}>{e}</li>)}</ul></Alert> : null}

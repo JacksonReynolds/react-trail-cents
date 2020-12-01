@@ -13,9 +13,9 @@ class ApplicationController < ActionController::API
         JWT.decode(token, ENV['secret'], true, algorithm: 'HS256')
         # JWT.decode => [{ "beef"=>"steak" }, { "alg"=>"HS256" }]
       rescue JWT::DecodeError
-        nil
+        {errors: ["Invalid token, try loggin in with email and password"]}
       rescue JWT::ExpiredSignature
-        nil
+        [{errors: ["Expired session, please log back in"]}]
       end
     end
   end
@@ -28,6 +28,8 @@ class ApplicationController < ActionController::API
     if decoded_token
       user_id = decoded_token[0]['user_id']
       user = User.find_by(id: user_id)
+    else
+
     end
   end
 end

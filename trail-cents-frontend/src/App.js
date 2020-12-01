@@ -35,11 +35,12 @@ class App extends PureComponent {
   }
 
   render() {
+    // debugger
     return (
       <Container>
-        <Error />
         <Router>
           <Route path="/" render={() => <NavBar handleLogout={this.handleLogout} />}/>
+          <Error errors={this.props.errors}/>
           <Switch>
             <Route exact path="/">
               {this.isLoggedIn() ? <Profile user={this.props.user} /> : <HomePage />}

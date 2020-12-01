@@ -9,12 +9,6 @@ import {Route} from 'react-router-dom'
 import EventDetail from './EventDetail'
 
 class EventsPage extends Component {
-    constructor() {
-        super()
-        this.state = {
-            focusedEvent: null
-        }
-    }
 
     componentDidMount() {
         if (this.props.events.length === 0) {

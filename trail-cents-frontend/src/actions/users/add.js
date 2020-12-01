@@ -9,7 +9,7 @@ export default function addUser(user) {
          .then(r => r.json())
          .then((response) => {
             if (response.errors) {
-                dispatch({type: "SIGNUP_ERROR", payload: response.errors})
+                dispatch({type: "SIGNUP_ERRORS", payload: response.errors})
             } else {
                 localStorage.jwt = response.jwt
                 dispatch({type: "ADD_USER", payload: response.user})

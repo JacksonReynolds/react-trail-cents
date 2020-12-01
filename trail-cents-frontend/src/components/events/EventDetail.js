@@ -16,7 +16,11 @@ const EventDetail = (props) => {
                     <Card.Body>
                         <Card.Title>{event.title}</Card.Title>
                         <Card.Text>
+                            Category: {event.category}<br/>
                             Date: {event.date} <br/>
+                            Start Time: {event.start} <br/>
+                            End Time: {event.end} <br/>
+                            Location: ({event.lat}, {event.long})<br/>
                             {event.desc} <br/>
                             Points Earned: {event.duration}
                         </Card.Text>

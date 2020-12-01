@@ -6,7 +6,7 @@ import CardDeck from 'react-bootstrap/CardDeck'
 import Event from '../components/events/Event'
 import volunteerForEvent from '../actions/users/volunteerForEvent'
 import {Route} from 'react-router-dom'
-import EventDetail from './EventDetail'
+import EventDetail from '../components/events/EventDetail'
 
 class EventsPage extends Component {
 

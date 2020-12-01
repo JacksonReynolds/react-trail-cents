@@ -74,7 +74,7 @@ rewards = [
         num_available: 3
     },
     {
-        desc: "$20 Clumpies Ice Crema Gift Card",
+        desc: "$20 Clumpies Ice Cream Gift Card",
         cost: 10,
         num_available: 10
     }

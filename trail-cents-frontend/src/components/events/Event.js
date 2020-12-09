@@ -28,6 +28,4 @@ const Event = (props) => {
     )
 }
 
-// change
-
 export default Event

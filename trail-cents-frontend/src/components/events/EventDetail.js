@@ -12,7 +12,7 @@ const EventDetail = (props) => {
         return (
             <div className={`event-${event.id}-detail`}>
                 <Card>
-                    <Card.Img variant="top" src={tf} alt="nope" maxHeight={'400px'}/>
+                    <Card.Img variant="top" src={tf} alt="nope" />
                     <Card.Body>
                         <Card.Title>{event.title}</Card.Title>
                         <Card.Text>

@@ -64,7 +64,7 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = ({user, errors}) => {
-  return {user, errors}
+  return {user}
 }
 
 export default connect(mapStateToProps, {logoutUser, loginWithToken})(App)

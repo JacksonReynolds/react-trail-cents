@@ -10,10 +10,16 @@ RSpec.describe "Users", type: :request do
                                password_confirmation: 'password',
                                email: 'email@email.com'}}
         post '/users', :params => valid_params, :headers => header
+        @user = User.find_by(id: JSON.parse(response.body)['user']['id'])
       end
 
       it 'returns successful' do
         expect(response).to have_http_status(:success)
+      end
+
+      it 'creates a user' do 
+        expect(@user).to be_an_instance_of(User)
+        # expect(@user).to 
       end
     end
   end

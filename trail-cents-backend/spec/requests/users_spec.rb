@@ -5,10 +5,10 @@ RSpec.describe "Users", type: :request do
     context "w/ valid params" do
       before do
         header = {'accepts': 'application/json'}
-        valid_params = {username: 'valid user', 
-                        password: 'password',
-                        password_confirmation: 'password',
-                        email: 'email@email.com'}
+        valid_params = {user: {username: 'valid user', 
+                               password: 'password',
+                               password_confirmation: 'password',
+                               email: 'email@email.com'}}
         post '/users', :params => valid_params, :headers => header
       end
 

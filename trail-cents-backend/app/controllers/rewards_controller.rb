@@ -9,7 +9,7 @@ class RewardsController < ApplicationController
             reward.update(num_available: reward.num_available-1)
             render json: reward
         else
-            render json: {errors: ["Couldn't find that reward"]}
+            render json: {errors: ["Couldn't find that reward"]}, :status => 500
         end
     end
 end

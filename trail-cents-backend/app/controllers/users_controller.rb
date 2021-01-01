@@ -19,7 +19,7 @@ class UsersController < ApplicationController
                 if user.points > reward.cost && user.update(points: user.points - reward.cost)
                     render json: user
                 else
-                    render json: {errors: ["You do not have enough points to purchase this item."]}, :status => 500
+                    render json: {errors: ["You do not have enough points to purchase this item"]}, :status => 500
                 end
             else
                 render json: {errors: ["Couldn't find that reward"]}, :status => 500

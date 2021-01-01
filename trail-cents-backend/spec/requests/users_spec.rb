@@ -32,7 +32,7 @@ RSpec.describe "Users", type: :request do
 
       # test contents of token
       it 'w/ user id' do
-        expect(@token_body['user_id']).to equal(@user.id)
+        expect(@token_body['user_id']).to eq(@user.id)
       end
 
       it 'w/ an expiration' do
@@ -65,11 +65,12 @@ RSpec.describe "Users", type: :request do
     context "for reward purchase" do
       context 'w/ valid params' do
         before do
-          @user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com', points: 10)
+          user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com', points: 10)
           @reward = Reward.create(desc: 'description', cost: '5', num_available: 5)
-          valid_params = {id: @user.id, rewardId: @reward.id}
+          valid_params = {id: user.id, rewardId: @reward.id}
 
-          patch "/users/#{@user.id}", :params => valid_params
+          patch "/users/#{user.id}", :params => valid_params
+          @user = User.find_by(id: user.id)
         end
 
         it 'returns successful' do
@@ -77,7 +78,26 @@ RSpec.describe "Users", type: :request do
         end
 
         it 'updates the users points' do
-          
+          expect(@user.points).to eq(5)
+        end
+
+        it 'returns user data' do
+          user_data = JSON.parse(response.body)['points']
+          expect(user_data).to_not be nil
+        end
+
+      end
+
+      context 'w/ invalid reward id' do
+        before do
+          @user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com', points: 10)
+          invalid_params = {id: @user.id, rewardId: nil}
+
+          patch "/users/#{@user.id}", :params => invalid_params, :header => @header
+        end
+
+        it 'returns unsuccessful' do
+          expect(repsonse).to have_http_status(:error)
         end
       end
     end

@@ -62,6 +62,20 @@ RSpec.describe "Users", type: :request do
 
   # test different update actions
   describe "PATCH /users/:id" do
+    context 'must have valid user id' do
+      before do
+        patch "/users/#{-1}", :headers => @header
+      end
+
+      it 'returns unsuccessful with invalid id' do
+        expect(response).to have_http_status(:error)
+      end
+
+      it 'returns errors' do
+        expect(response.body).to include("Couldn't find that user")
+      end
+    end
+
     context "for reward purchase" do
       context 'w/ valid params' do
         before do
@@ -142,6 +156,23 @@ RSpec.describe "Users", type: :request do
           expect(user_data).to be
           expect(user_data['id']).to eq(@new_user.id)
           expect(user_data['points'].to_i).to eq(14.0)
+        end
+      end
+
+      context 'w/ invalid event id' do
+        before do
+          user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com')
+          invalid_params = {id: user.id, eventId: ''}
+
+          patch "/users/#{user.id}", :params => invalid_params, :headers => @header
+        end
+
+        it 'returns unsuccessful' do
+          expect(response).to have_http_status(:error)
+        end
+
+        it 'returns errors' do
+          expect(response.body).to include("Couldn't find that event")
         end
       end
     end

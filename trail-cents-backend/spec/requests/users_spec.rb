@@ -17,9 +17,8 @@ RSpec.describe "Users", type: :request do
         expect(response).to have_http_status(:success)
       end
 
-      it 'creates a user' do 
+      it 'creates a user record' do 
         expect(@user).to be_an_instance_of(User)
-        # expect(@user).to 
       end
     end
   end

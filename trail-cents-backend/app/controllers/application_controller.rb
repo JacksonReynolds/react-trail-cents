@@ -10,10 +10,10 @@ class ApplicationController < ActionController::API
       token = auth_header.split(' ')[1]
       # headers: { 'Authorization': 'Bearer <token>' }
       begin
-        JWT.decode(token, ENV['secret'], true, algorithm: 'HS256')
+        JWT.decode(token, ENV['secret'], true, algorithm: 'HS256')[0]
         # JWT.decode => [{ "beef"=>"steak" }, { "alg"=>"HS256" }]
       rescue JWT::DecodeError
-        {errors: ["Invalid token, try loggin in with email and password"]}
+        {errors: ["Invalid token, try logging in with email and password"]}
       rescue JWT::ExpiredSignature
         {errors: ["Expired session, please log back in"]}
       end
@@ -25,11 +25,14 @@ class ApplicationController < ActionController::API
   end
 
   def token_response
-    if decoded_token && decoded_token.length > 1
-      user_id = decoded_token[0]['user_id']
+    if user_id = decoded_token['user_id']
       user = User.find_by(id: user_id)
     else
       errors = decoded_token
     end
+  end
+
+  def token_present?
+    !!auth_header
   end
 end

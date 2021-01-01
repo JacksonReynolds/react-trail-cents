@@ -12,10 +12,10 @@ class ApplicationController < ActionController::API
       begin
         JWT.decode(token, ENV['secret'], true, algorithm: 'HS256')[0]
         # JWT.decode => [{ "beef"=>"steak" }, { "alg"=>"HS256" }]
+      rescue JWT::ExpiredSignature # must be first or else error will be lumped into DecodeError exception class
+        {errors: ["Expired session, please log back in"]}
       rescue JWT::DecodeError
         {errors: ["Invalid token, try logging in with email and password"]}
-      rescue JWT::ExpiredSignature
-        {errors: ["Expired session, please log back in"]}
       end
     end
   end

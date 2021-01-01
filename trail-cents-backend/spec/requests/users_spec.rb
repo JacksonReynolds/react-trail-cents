@@ -65,24 +65,24 @@ RSpec.describe "Users", type: :request do
     context "for reward purchase" do
       context 'w/ valid params' do
         before do
-          user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com', points: 10)
-          @reward = Reward.create(desc: 'description', cost: '5', num_available: 5)
-          valid_params = {id: user.id, rewardId: @reward.id}
+          new_user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com', points: 10)
+          reward = Reward.create(desc: 'description', cost: '5', num_available: 5)
+          valid_params = {id: new_user.id, rewardId: reward.id}
 
-          patch "/users/#{user.id}", :params => valid_params
-          @user = User.find_by(id: user.id)
+          patch "/users/#{new_user.id}", :params => valid_params
         end
-
+        
         it 'returns successful' do
           expect(response).to have_http_status(:success)
         end
-
+        
         it 'updates the users points' do
-          expect(@user.points).to eq(5)
+          user = User.find_by(id: JSON.parse(response.body)['id'])
+          expect(user.points).to eq(5)
         end
 
         it 'returns user data' do
-          user_data = JSON.parse(response.body)['points']
+          user_data = JSON.parse(response.body)
           expect(user_data).to_not be nil
         end
 
@@ -107,8 +107,8 @@ RSpec.describe "Users", type: :request do
       context 'w/ insufficient points' do
         before do
           user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com')
-          @reward = Reward.create(desc: 'description', cost: '5', num_available: 5)
-          invalid_params = {id: user.id, rewardId: @reward.id}
+          reward = Reward.create(desc: 'description', cost: '5', num_available: 5)
+          invalid_params = {id: user.id, rewardId: reward.id}
 
           patch "/users/#{user.id}", :params => invalid_params, :headers => @header
         end
@@ -125,7 +125,24 @@ RSpec.describe "Users", type: :request do
 
     context 'for event registration' do
       context 'w/ valid params' do
+        before do
+          @new_user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com', points: 10)
+          event = Event.create(title: 'skinny event', duration: 4.0)
+          valid_params = {id: @new_user.id, eventId: event.id}
+
+          patch "/users/#{@new_user.id}", :params => valid_params, :headers => @header
+        end
         
+        it 'returns successful' do
+          expect(response).to have_http_status(:successful)
+        end
+
+        it 'returns updated user data' do
+          user_data = JSON.parse(response.body)
+          expect(user_data).to be
+          expect(user_data['id']).to eq(@new_user.id)
+          expect(user_data['points'].to_i).to eq(14.0)
+        end
       end
     end
   end

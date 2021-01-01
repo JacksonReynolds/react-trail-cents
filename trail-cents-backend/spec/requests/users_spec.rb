@@ -90,15 +90,42 @@ RSpec.describe "Users", type: :request do
 
       context 'w/ invalid reward id' do
         before do
-          @user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com', points: 10)
-          invalid_params = {id: @user.id, rewardId: nil}
-
-          patch "/users/#{@user.id}", :params => invalid_params, :header => @header
+          user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com', points: 10)
+          invalid_params = {id: user.id, rewardId: ''}
+          patch "/users/#{user.id}", :params => invalid_params, :headers => @header
         end
 
         it 'returns unsuccessful' do
-          expect(repsonse).to have_http_status(:error)
+          expect(response).to have_http_status(:error)
         end
+
+        it 'returns errors' do
+          expect(response.body).to include("Couldn't find that reward")
+        end
+      end
+
+      context 'w/ insufficient points' do
+        before do
+          user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com')
+          @reward = Reward.create(desc: 'description', cost: '5', num_available: 5)
+          invalid_params = {id: user.id, rewardId: @reward.id}
+
+          patch "/users/#{user.id}", :params => invalid_params, :headers => @header
+        end
+
+        it 'returns unsuccessful' do
+          expect(response).to have_http_status(:error)
+        end
+
+        it 'returns errors' do
+          expect(response.body).to include("You do not have enough points to purchase this item")
+        end
+      end
+    end
+
+    context 'for event registration' do
+      context 'w/ valid params' do
+        
       end
     end
   end

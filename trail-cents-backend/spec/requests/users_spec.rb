@@ -5,6 +5,7 @@ RSpec.describe "Users", type: :request do
     @header = {'accepts': 'application/json'}
   end
 
+  # test user creation request/response
   describe "POST /users" do
     context "w/ valid params" do
       before do
@@ -59,10 +60,25 @@ RSpec.describe "Users", type: :request do
     end
   end
 
+  # test different update actions
   describe "PATCH /users/:id" do
-    context "w/ valid params" do
-      before do
+    context "for reward purchase" do
+      context 'w/ valid params' do
+        before do
+          @user = User.create(username: 'me', password: 'pw', password_confirmation: 'pw', email: 'an@email.com', points: 10)
+          @reward = Reward.create(desc: 'description', cost: '5', num_available: 5)
+          valid_params = {id: @user.id, rewardId: @reward.id}
 
+          patch "/users/#{@user.id}", :params => valid_params
+        end
+
+        it 'returns successful' do
+          expect(response).to have_http_status(:success)
+        end
+
+        it 'updates the users points' do
+          
+        end
       end
     end
   end

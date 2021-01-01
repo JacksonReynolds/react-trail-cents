@@ -41,7 +41,7 @@ RSpec.describe "Auth", type: :request do
 
     context 'w/ expired token' do
       before do
-        @user = User.create(username: 'validuser', password: 'pw', password_confirmation: 'pw', email: 'notme@email.com')
+        @user = User.create(username: 'user', password: 'pw', password_confirmation: 'pw', email: 'me@email.com')
         payload = {user_id: @user.id, exp: Time.now.to_i-1}
         token = JWT.encode(payload, ENV['secret'])
         headers = {'accepts': 'application/json', "Authorization": "Bearer #{token}"}
